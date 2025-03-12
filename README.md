@@ -26,18 +26,20 @@ To set up and run this demo, ensure you have a Kubernetes cluster and Tekton Pip
 1. Apply the RBAC configuration:
    ```bash
    kubectl apply -f rbac.yaml
-   ```
-Apply the tasks and pipeline configurations:
-bash
+   
+2. Apply the tasks and pipeline configurations:
+```bash
 kubectl apply -f hello-world.yaml
 kubectl apply -f goodbye-world.yaml
 kubectl apply -f hello-goodbye-pipeline.yaml
-Apply the EventListener:
-bash
+```
+3. Apply the EventListener:
+```bash
 kubectl apply -f event-listener.yaml
-Files and Configuration
-Event Listener
+```
+## Files and Configuration
 
+### Event Listener
 ```YAML
 apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
@@ -53,6 +55,9 @@ spec:
         ref: hello-template
 ```
 The EventListener is responsible for triggering the pipeline run based on certain events.
+![Alt text](https://tekton.dev/images/TriggerFlow.svg)
+
+### Goodbye World Task
 
 ```yaml
 apiVersion: tekton.dev/v1beta1
@@ -72,6 +77,7 @@ spec:
 ```
 The Goodbye World Task prints a goodbye message.
 
+### Hello Goodbye Pipeline
 ```yaml
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
@@ -95,6 +101,8 @@ spec:
         value: $(params.username)
 ```
 The Hello Goodbye Pipeline runs the "hello" task followed by the "goodbye" task.
+
+### Hello World Task
 ```yaml
 apiVersion: tekton.dev/v1beta1
 kind: Task
@@ -109,6 +117,7 @@ spec:
         echo "Hello World"
 ```
 The Hello World Task prints a hello message.
+### RBAC Configuration
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -161,10 +170,12 @@ Apply the PipelineRun:
 ```bash
 kubectl apply -f hello-goodbye-pipeline-run.yaml
 ```
-License
+### Contributing
+Contributions are welcome! Please submit a pull request or open an issue to discuss your idea.
+
+### License
 This project is licensed under the MIT License.
 
 ```Code
-
 You can further customize this README file as needed. Would you like me to commit this README file to your repository?
 ```
