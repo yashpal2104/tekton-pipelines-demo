@@ -1,9 +1,10 @@
 # Tekton Pipelines Demo
 
-This repository contains a demonstration of Tekton Pipelines, showcasing various Tekton tasks, pipelines, and associated configurations.
+This repository contains a demonstration of Tekton Pipelines, showcasing various Tekton tasks, pipelines, and associated configurations to automate CI/CD workflows in a Kubernetes environment.
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Minikube Setup](#minikube-setup)
 - [Setup](#setup)
 - [Files and Configuration](#files-and-configuration)
   - [Event Listener](#event-listener)
@@ -19,8 +20,25 @@ This repository contains a demonstration of Tekton Pipelines, showcasing various
 
 This project demonstrates how to use Tekton Pipelines to orchestrate tasks in a Kubernetes environment. The example includes tasks for saying "Hello" and "Goodbye" and a pipeline that runs these tasks sequentially.
 
-## Setup
+## Minikube Setup
 
+To set up Minikube, follow these steps:
+
+1. Install Minikube:
+   ```bash
+   curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   sudo install minikube-linux-amd64 /usr/local/bin/minikube
+2. Start Minikube:
+
+```bash
+minikube start --driver=virtualbox
+```
+3. Verify Minikube installation:
+
+```bash
+minikube status
+```
+## Setup
 To set up and run this demo, ensure you have a Kubernetes cluster and Tekton Pipelines installed. Follow these steps to apply the configurations:
 
 1. Apply the RBAC configuration:
